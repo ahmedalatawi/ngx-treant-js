@@ -1,0 +1,181 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "angular-treant-demo": {
+            "projectType": "application",
+            "schematics": {},
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "ngx-treant-demo",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/angular-treant-demo",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "aot": true,
+                        "assets": ["src/favicon.ico", "src/assets"],
+                        "styles": [
+                            "node_modules/treant-js/Treant.css",
+                            "node_modules/treant-js/vendor/perfect-scrollbar/perfect-scrollbar.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "src/styles.css"
+                        ],
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.min.js",
+                            "node_modules/popper.js/dist/umd/popper.js",
+                            "node_modules/bootstrap/dist/js/bootstrap.js",
+                            "node_modules/treant-js/vendor/jquery.easing.js",
+                            "node_modules/treant-js/vendor/jquery.mousewheel.js",
+                            "node_modules/treant-js/vendor/perfect-scrollbar/perfect-scrollbar.js",
+                            "node_modules/treant-js/vendor/raphael.js",
+                            "node_modules/treant-js/Treant.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "angular-treant-demo:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "angular-treant-demo:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "angular-treant-demo:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
+                        "assets": ["src/favicon.ico", "src/assets"],
+                        "styles": [
+                            "node_modules/treant-js/Treant.css",
+                            "node_modules/treant-js/vendor/perfect-scrollbar/perfect-scrollbar.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                            "src/styles.css"
+                        ],
+                        "scripts": [
+                            "node_modules/jquery/dist/jquery.min.js",
+                            "node_modules/popper.js/dist/umd/popper.js",
+                            "node_modules/bootstrap/dist/js/bootstrap.js",
+                            "node_modules/treant-js/vendor/jquery.easing.js",
+                            "node_modules/treant-js/vendor/jquery.mousewheel.js",
+                            "node_modules/treant-js/vendor/perfect-scrollbar/perfect-scrollbar.js",
+                            "node_modules/treant-js/vendor/raphael.js",
+                            "node_modules/treant-js/Treant.js"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "tsconfig.app.json",
+                            "tsconfig.spec.json",
+                            "e2e/tsconfig.json"
+                        ],
+                        "exclude": ["**/node_modules/**"]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "angular-treant-demo:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "angular-treant-demo:serve:production"
+                        }
+                    }
+                }
+            }
+        },
+        "@ahmed757/ngx-treant-js": {
+            "projectType": "library",
+            "root": "projects/ahmed757/ngx-treant-js",
+            "sourceRoot": "projects/ahmed757/ngx-treant-js/src",
+            "prefix": "ngx-treant",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/ahmed757/ngx-treant-js/tsconfig.lib.json",
+                        "project": "projects/ahmed757/ngx-treant-js/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/ahmed757/ngx-treant-js/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/ahmed757/ngx-treant-js/src/test.ts",
+                        "tsConfig": "projects/ahmed757/ngx-treant-js/tsconfig.spec.json",
+                        "karmaConfig": "projects/ahmed757/ngx-treant-js/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/ahmed757/ngx-treant-js/tsconfig.lib.json",
+                            "projects/ahmed757/ngx-treant-js/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "angular-treant-demo"
+}

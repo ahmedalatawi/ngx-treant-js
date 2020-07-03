@@ -1,0 +1,18 @@
+<div class="container">
+      <p>Connectors Chart</p>
+
+    <ngx-treant-chart
+          [chartId]="connectorsId"
+          [chartClass]="connectorsClass"
+          [data]="connectorsData"
+          [isDraggable]="true"
+          (dragged)="onDrag($event)" 
+          (dropped)="onDrop($event)" 
+          (clicked)="onClick($event)"
+          (hovered)="onHover($event)"
+          (updated)="onUpdate($event)" 
+          (loadedNodes)="onLoadNodes($event)"
+          (loadedTree)="onLoadTree($event)"
+          (loadedTreant)="onLoadTreant($event)">
+    </ngx-treant-chart>
+  </div>

@@ -1,0 +1,37 @@
+{
+    "extends": ["config:base"],
+    "baseBranch": "develop",
+    "packageRules": [
+        {
+            "packagePatterns": ["ahmed757/ngx-treant-js"],
+            "rangeStrategy": "replace"
+        },
+        {
+            "packagePatterns": ["ahmed757/ngx-treant-js"],
+            "depTypeList": ["devDependencies"],
+            "rangeStrategy": "pin"
+        },
+        {
+            "packagePatterns": ["ahmed757/ngx-treant-js"],
+            "depTypeList": ["peerDependencies"],
+            "rangeStrategy": "widen"
+        },
+        {
+            "packagePatterns": ["angular-treant-demo"],
+            "rangeStrategy": "replace",
+            "semanticCommitType": "chore"
+        },
+        {
+            "packagePatterns": ["angular-treant-demo"],
+            "depTypeList": ["devDependencies"],
+            "rangeStrategy": "pin",
+            "semanticCommitType": "chore"
+        },
+        {
+            "packagePatterns": ["angular-treant-demo"],
+            "depTypeList": ["peerDependencies"],
+            "rangeStrategy": "widen",
+            "semanticCommitType": "chore"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+<div class="container">
+      <p>Collapsable Chart</p>
+      
+    <ngx-treant-chart
+          [chartId]="collapsableStructureId"
+          [chartClass]="collapsableStructureClass"
+          [data]="collapsableStructureData" 
+          [isDraggable]="true"
+          (dragged)="onDrag($event)" 
+          (dropped)="onDrop($event)" 
+          (clicked)="onClick($event)"
+          (hovered)="onHover($event)" 
+          (loadedNodes)="onLoadNodes($event)"
+          (loadedTree)="onLoadTree($event)"
+          (loadedTreant)="onLoadTreant($event)">
+    </ngx-treant-chart>
+  </div>
