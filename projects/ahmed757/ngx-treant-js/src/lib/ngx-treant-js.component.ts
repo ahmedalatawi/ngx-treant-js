@@ -3,6 +3,10 @@ import { Component, AfterViewInit, Input, Output, EventEmitter } from '@angular/
 declare const Treant: any;
 declare const $: any;
 
+/**
+ * A simple Angular2+ component used as a wrapper for [TreantJS](https://fperucic.github.io/treant-js/) library 
+ * for visualization of tree (chart) diagrams, with additional functionality.
+ */
 @Component({
     selector: 'ngx-treant-chart',
     templateUrl: './ngx-treant-js.component.html',
