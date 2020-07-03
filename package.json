@@ -13,7 +13,7 @@
         "test-lib-ci": "npm run test-lib -- --browsers ChromeHeadlessCI --watch false",
         "lint": "ng lint",
         "lint-lib": "ng lint @ahmed757/ngx-treant-js",
-        "lint-prettier": "prettier --write '**/*.{ts,js,jsx,json}'",
+        "lint-prettier": "prettier --write '*.{ts,js,jsx,json}'",
         "e2e": "ng e2e",
         "prepublishOnly": "npm run -s build",
         "commit": "git-cz",

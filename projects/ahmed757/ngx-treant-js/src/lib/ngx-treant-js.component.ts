@@ -209,6 +209,7 @@ export class NgxTreantJsComponent implements AfterViewInit {
             this.loadedNodes.emit({ nodes: callback.nodeDB.db, $ });
         };
 
+        // create Treant instance and add its container ID
         const treant = new Treant(this.data, callback, $);
         treant.container_id = this.chartId;
         this.loadedTreant.emit(treant);
