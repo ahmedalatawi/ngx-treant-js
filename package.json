@@ -1,6 +1,7 @@
 {
     "name": "angular-treant-demo",
     "version": "0.0.0",
+    "author": "Ahmed Alatawi (aalat001@gmail.com)",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -43,6 +44,28 @@
         "registry": "https://registry.npmjs.org/"
     },
     "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AhmedAlatawi/ngx-treant-js.git"
+    },
+    "bugs": {
+        "url": "https://github.com/AhmedAlatawi/ngx-treant-js/issues"
+    },
+    "homepage": "https://github.com/AhmedAlatawi/ngx-treant-js",
+    "keywords": [
+        "angular",
+        "javascript",
+        "typescript",
+        "bootstrap",
+        "treant-js",
+        "jquery",
+        "visualization",
+        "tree",
+        "diagrams",
+        "draws",
+        "charts",
+        "SVG"
+    ],
     "dependencies": {
         "@angular/animations": "~9.0.7",
         "@angular/common": "~9.0.7",

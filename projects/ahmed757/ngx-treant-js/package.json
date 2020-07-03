@@ -1,30 +1,8 @@
 {
-  "name": "@ahmed757/ngx-treant-js",
-  "version": "0.0.0-semantically-released",
+    "name": "@ahmed757/ngx-treant-js",
+    "version": "0.0.0-semantically-released",
     "description": "A simple Angular component used as a wrapper for TreantJS with additional functionality.",
     "author": "Ahmed Alatawi (aalat001@gmail.com)",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/AhmedAlatawi/ngx-treant-js.git"
-    },
-    "bugs": {
-        "url": "https://github.com/AhmedAlatawi/ngx-treant-js/issues"
-    },
-    "homepage": "https://github.com/AhmedAlatawi/ngx-treant-js",
-    "keywords": [
-        "angular",
-        "javascript",
-        "typescript",
-        "bootstrap",
-        "treant-js",
-        "jquery",
-        "visualization",
-        "tree",
-        "diagrams",
-        "draws",
-        "charts",
-        "SVG"
-    ],
     "license": "MIT",
     "peerDependencies": {
         "@angular/common": "^9.0.7",
