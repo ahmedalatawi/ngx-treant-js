@@ -210,6 +210,7 @@ export class NgxTreantJsComponent implements AfterViewInit {
                     });
             }
 
+            // emit Tree nodes
             this.loadedNodes.emit({ nodes: callback.nodeDB.db, $ });
         };
 
