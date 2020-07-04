@@ -1,6 +1,6 @@
 {
     "extends": ["config:base"],
-    "baseBranch": "develop",
+    "baseBranch": "master",
     "packageRules": [
         {
             "packagePatterns": ["ahmed757/ngx-treant-js"],
