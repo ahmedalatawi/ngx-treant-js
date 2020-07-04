@@ -215,6 +215,7 @@ export class NgxTreantJsComponent implements AfterViewInit {
         };
 
         // create Treant instance and add its container ID
+        // this instance can be useful to operate on the Tree
         const treant = new Treant(this.data, callback, $);
         treant.container_id = this.chartId;
         this.loadedTreant.emit(treant);

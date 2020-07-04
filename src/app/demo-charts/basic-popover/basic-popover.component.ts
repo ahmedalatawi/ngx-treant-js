@@ -37,9 +37,13 @@ export class BasicPopoverComponent implements OnInit {
         trigger: 'hover',
     };
 
-    constructor(private svc: DemoAppService) {}
+    constructor(private svc: DemoAppService) {
+    
+    }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        // do something here
+    }
 
     onDrag(obj): void {
         console.log(obj);
