@@ -64,8 +64,7 @@
         "tree",
         "diagrams",
         "draws",
-        "charts",
-        "SVG"
+        "charts"
     ],
     "dependencies": {
         "@angular/animations": "~9.0.7",

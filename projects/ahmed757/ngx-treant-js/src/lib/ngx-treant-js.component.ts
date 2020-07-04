@@ -4,7 +4,7 @@ declare const Treant: any;
 declare const $: any;
 
 /**
- * A simple Angular2+ component used as a wrapper for [TreantJS](https://fperucic.github.io/treant-js/) library 
+ * A simple Angular2+ component used as a wrapper for [TreantJS](https://fperucic.github.io/treant-js/) library
  * for visualization of tree (chart) diagrams, with additional functionality.
  */
 @Component({
@@ -132,7 +132,7 @@ export class NgxTreantJsComponent implements AfterViewInit {
                     if (event.keyCode === 13) {
                         const inputClass = $(event.target).attr('class');
                         const newValue = $('.input-field').val() ? $('.input-field').val() : value;
-                        
+
                         $(currentEle).html('<p class="' + classVal + '">' + newValue + '</p>');
                         if (inputClass === 'input-field') {
                             isTextUpdated = true;

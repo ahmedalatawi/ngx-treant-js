@@ -37,9 +37,7 @@ export class BasicPopoverComponent implements OnInit {
         trigger: 'hover',
     };
 
-    constructor(private svc: DemoAppService) {
-    
-    }
+    constructor(private svc: DemoAppService) {}
 
     ngOnInit(): void {
         // do something here
