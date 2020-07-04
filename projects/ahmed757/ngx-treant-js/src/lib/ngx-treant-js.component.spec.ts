@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxTreantJsComponent } from './ngx-treant-js.component';
 
 import { Treant } from 'treant-js';
-import * as raphael from '../../../../node_modules/treant-js/vendor/raphael';
+import * as raphael from '../../../../../node_modules/treant-js/vendor/raphael';
 import * as jquery from 'jquery';
 
 (<any>window).Treant = Treant;
