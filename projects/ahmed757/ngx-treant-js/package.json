@@ -31,7 +31,7 @@
         "@angular/common": "^9.0.7",
         "@angular/core": "^9.0.7",
         "@types/jquery": "^3.3.38",
-        "tslib": "^1.10.0",
+        "tslib": "^1.10.0 || ^2.0.0",
         "bootstrap": "^4.5.0",
         "jquery": "^3.5.1",
         "jquery-easing": "0.0.1",
