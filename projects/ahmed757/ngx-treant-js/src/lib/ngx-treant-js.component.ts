@@ -132,8 +132,7 @@ export class NgxTreantJsComponent implements AfterViewInit {
                     if (event.keyCode === 13) {
                         const inputClass = $(event.target).attr('class');
                         const newValue = $('.input-field').val() ? $('.input-field').val() : value;
-                        console.log('current value ', value);
-                        console.log('value ', $('.input-field').val());
+                        
                         $(currentEle).html('<p class="' + classVal + '">' + newValue + '</p>');
                         if (inputClass === 'input-field') {
                             isTextUpdated = true;
