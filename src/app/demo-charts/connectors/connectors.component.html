@@ -1,18 +1,19 @@
 <div class="container">
-      <p>Connectors Chart: supports mouse click, double-click, and drag-drop events.</p>
+    <p>Connectors Chart: supports mouse click, double-click, and drag-drop events.</p>
 
     <ngx-treant-chart
-          [chartId]="connectorsId"
-          [chartClass]="connectorsClass"
-          [data]="connectorsData"
-          [isDraggable]="true"
-          (dragged)="onDrag($event)" 
-          (dropped)="onDrop($event)" 
-          (clicked)="onClick($event)"
-          (hovered)="onHover($event)"
-          (updated)="onUpdate($event)" 
-          (loadedNodes)="onLoadNodes($event)"
-          (loadedTree)="onLoadTree($event)"
-          (loadedTreant)="onLoadTreant($event)">
+        [chartId]="connectorsId"
+        [chartClass]="connectorsClass"
+        [data]="connectorsData"
+        [isDraggable]="true"
+        (dragged)="onDrag($event)"
+        (dropped)="onDrop($event)"
+        (clicked)="onClick($event)"
+        (hovered)="onHover($event)"
+        (updated)="onUpdate($event)"
+        (loadedNodes)="onLoadNodes($event)"
+        (loadedTree)="onLoadTree($event)"
+        (loadedTreant)="onLoadTreant($event)"
+    >
     </ngx-treant-chart>
-  </div>
+</div>

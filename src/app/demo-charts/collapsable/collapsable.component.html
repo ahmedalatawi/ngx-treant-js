@@ -1,17 +1,18 @@
 <div class="container">
-      <p>Collapsable Chart: supports mouse click and drag-drop events.</p>
-      
+    <p>Collapsable Chart: supports mouse click and drag-drop events.</p>
+
     <ngx-treant-chart
-          [chartId]="collapsableStructureId"
-          [chartClass]="collapsableStructureClass"
-          [data]="collapsableStructureData" 
-          [isDraggable]="true"
-          (dragged)="onDrag($event)" 
-          (dropped)="onDrop($event)" 
-          (clicked)="onClick($event)"
-          (hovered)="onHover($event)" 
-          (loadedNodes)="onLoadNodes($event)"
-          (loadedTree)="onLoadTree($event)"
-          (loadedTreant)="onLoadTreant($event)">
+        [chartId]="collapsableStructureId"
+        [chartClass]="collapsableStructureClass"
+        [data]="collapsableStructureData"
+        [isDraggable]="true"
+        (dragged)="onDrag($event)"
+        (dropped)="onDrop($event)"
+        (clicked)="onClick($event)"
+        (hovered)="onHover($event)"
+        (loadedNodes)="onLoadNodes($event)"
+        (loadedTree)="onLoadTree($event)"
+        (loadedTreant)="onLoadTreant($event)"
+    >
     </ngx-treant-chart>
-  </div>
+</div>
