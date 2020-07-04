@@ -169,9 +169,7 @@
                             "projects/ahmed757/ngx-treant-js/tsconfig.lib.json",
                             "projects/ahmed757/ngx-treant-js/tsconfig.spec.json"
                         ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
+                        "exclude": ["**/node_modules/**"]
                     }
                 }
             }
