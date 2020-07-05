@@ -68,7 +68,7 @@
         "svg"
     ],
     "dependencies": {
-        "@ahmed757/ngx-treant-js": "^1.0.3",
+        "@ahmed757/ngx-treant-js": "^1.0.4",
         "@angular/animations": "~9.0.7",
         "@angular/common": "~9.0.7",
         "@angular/compiler": "~9.0.7",
