@@ -37,7 +37,6 @@
     },
     "peerDependencies": {
         "@angular/common": "^9.0.7",
-        "@angular/core": "^9.0.7",
-        "@types/jquery": "^3.3.38"
+        "@angular/core": "^9.0.7"
     }
 }
