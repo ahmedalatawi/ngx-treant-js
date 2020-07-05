@@ -68,6 +68,7 @@
         "svg"
     ],
     "dependencies": {
+        "@ahmed757/ngx-treant-js": "^1.0.3",
         "@angular/animations": "~9.0.7",
         "@angular/common": "~9.0.7",
         "@angular/compiler": "~9.0.7",
@@ -83,7 +84,7 @@
         "popper.js": "^1.16.1",
         "rxjs": "~6.5.4",
         "treant-js": "^1.0.1",
-        "tslib": "2.0.0",
+        "tslib": "^1.10.0",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {

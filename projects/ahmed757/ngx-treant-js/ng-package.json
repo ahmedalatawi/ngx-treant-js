@@ -1,6 +1,13 @@
 {
     "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
     "dest": "../../../dist/ahmed757/ngx-treant-js",
+    "whitelistedNonPeerDependencies": [
+        "jquery",
+        "jquery-easing",
+        "popper",
+        "popper.js",
+        "treant-js"
+    ],
     "lib": {
         "entryFile": "src/public-api.ts"
     }

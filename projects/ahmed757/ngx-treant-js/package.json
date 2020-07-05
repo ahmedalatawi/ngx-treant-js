@@ -27,16 +27,17 @@
         "charts",
         "SVG"
     ],
-    "peerDependencies": {
-        "@angular/common": "^9.0.7",
-        "@angular/core": "^9.0.7",
-        "@types/jquery": "^3.3.38",
-        "tslib": "^1.10.0 || ^2.0.0",
-        "bootstrap": "^4.5.0",
+    "dependencies": {
         "jquery": "^3.5.1",
         "jquery-easing": "0.0.1",
         "popper": "^1.0.1",
         "popper.js": "^1.16.1",
-        "treant-js": "^1.0.1"
+        "treant-js": "^1.0.1",
+        "tslib": "^1.10.0"
+    },
+    "peerDependencies": {
+        "@angular/common": "^9.0.7",
+        "@angular/core": "^9.0.7",
+        "@types/jquery": "^3.3.38"
     }
 }
