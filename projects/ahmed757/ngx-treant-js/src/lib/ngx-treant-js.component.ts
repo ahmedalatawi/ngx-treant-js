@@ -19,6 +19,7 @@ export class NgxTreantJsComponent implements AfterViewInit {
     @Input() popoverSettings: any;
     @Input() mouseleaveMilliseconds: number;
     @Input() isDraggable: boolean;
+    @Input() textProps: any;
 
     @Output() clicked: EventEmitter<any> = new EventEmitter();
     @Output() hovered: EventEmitter<any> = new EventEmitter();
@@ -34,8 +35,12 @@ export class NgxTreantJsComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         const callback = (callback: any) => {
+            let popoverElm1;
+            let popoverElm2;
+            let timeout;
             let draggedNode;
             let droppedNode;
+
             const __this = this;
 
             // add ids to nodeDOMs
@@ -77,7 +82,7 @@ export class NgxTreantJsComponent implements AfterViewInit {
                 nodes[dragIndex].stackParentId = dragClone.stackParentId;
                 nodes[dragIndex].stackParent = dragClone.stackParent;
                 nodes[dragIndex].leftNeighborId = dragClone.leftNeighborId;
-                nodes[dragIndex].rightNeighborId = dragClone.rightNeighborId; //collapsable
+                nodes[dragIndex].rightNeighborId = dragClone.rightNeighborId;
                 nodes[dragIndex].collapsed = dragClone.collapsed;
                 nodes[dragIndex].collapsable = dragClone.collapsable;
 
@@ -96,8 +101,16 @@ export class NgxTreantJsComponent implements AfterViewInit {
                 nodes[dropIndex].collapsable = dropClone.collapsable;
             }
 
+            function hidePopover() {
+                $(popoverElm1).popover('hide');
+                $(popoverElm2).popover('hide');
+            }
+
             function drag(event) {
                 draggedNode = callback.nodeDB.db.find((n) => n.id == $(this).attr('id'));
+
+                hidePopover();
+
                 __this.dragged.emit({ draggedNode, $ });
             }
 
@@ -105,7 +118,9 @@ export class NgxTreantJsComponent implements AfterViewInit {
                 event.preventDefault();
                 droppedNode = callback.nodeDB.db.find((n) => n.id == $(this).attr('id'));
 
-                __this.dropped.emit({ draggedNode, droppedNode, $ });
+                hidePopover();
+
+                __this.dropped.emit({ draggedNode: droppedNode, droppedNode: draggedNode, $ });
 
                 const dragIndex = callback.nodeDB.db.findIndex((n) => n.id == draggedNode.id);
                 const dropIndex = callback.nodeDB.db.findIndex((n) => n.id == droppedNode.id);
@@ -119,13 +134,12 @@ export class NgxTreantJsComponent implements AfterViewInit {
                 event.preventDefault();
             }
 
-            function updateTextVal(currentEle, value, classVal) {
-                const node = callback.nodeDB.db.find((n) => n.id == $(currentEle).attr('id'));
+            function updateTextVal(currentEle, value, classVal, node, propName) {
                 let isTextUpdated = false;
 
                 $(document).off('click');
                 $(currentEle).html(
-                    '<input class="input-field" type="text" value="' + value + '"/>'
+                    '<input class="input-field" style="width:' + $(currentEle).width() +'px;" type="text" value="' + value + '"/>'
                 );
                 $('.input-field').focus();
                 $('.input-field').keyup(function (event) {
@@ -138,8 +152,10 @@ export class NgxTreantJsComponent implements AfterViewInit {
                             isTextUpdated = true;
                         }
 
-                        node.text.name = newValue;
-                        node.width = $(currentEle).width();
+                        if (propName) {
+                            node.text[propName] = newValue;
+                            node.width = $(currentEle).width();
+                        }
 
                         callback.positionTree();
 
@@ -154,8 +170,10 @@ export class NgxTreantJsComponent implements AfterViewInit {
                         $(currentEle).html('<p class="' + classVal + '">' + newValue + '</p>');
                         $(document).off('click');
 
-                        node.text.name = newValue;
-                        node.width = $(currentEle).width();
+                        if (propName) {
+                            node.text[propName] = newValue;
+                            node.width = $(currentEle).width();
+                        }
 
                         callback.positionTree();
 
@@ -168,18 +186,24 @@ export class NgxTreantJsComponent implements AfterViewInit {
 
             $oNodes.off('click').on('click', function (event) {
                 const node = callback.nodeDB.db.find((n) => n.id == $(this).attr('id'));
+
+                hidePopover();
+
                 __this.clicked.emit({ node, $ });
             });
 
             $oNodes.off('dblclick').on('dblclick', function (e) {
                 if ($(event.target).attr('class') !== 'input-field') {
                     e.stopPropagation();
-                    const currentEle = $(this);
-                    const value = $(this).text();
+                    const node = callback.nodeDB.db.find((n) => n.id == $(this).attr('id'));
+                    const currentEle = $(event.target);
+                    const value = $(event.target).text();
                     const classVal = $(event.target).attr('class');
-                    const node = callback.nodeDB.db.find((n) => n.id == $(currentEle).attr('id'));
+                    const propName = classVal && classVal.split('-')[1];
 
-                    !node.image && updateTextVal(currentEle, value, classVal);
+                    hidePopover();
+
+                    (node.text && node.text[propName]) && updateTextVal(currentEle, value, classVal, node, propName);
                 }
             });
 
@@ -187,25 +211,38 @@ export class NgxTreantJsComponent implements AfterViewInit {
                 $oNodes.popover(this.popoverSettings);
                 $oNodes
                     .off('mouseenter')
-                    .on('mouseenter', function () {
-                        var _this = this;
-                        $(this).popover('show');
+                    .on('mouseenter', function (e) {
+                        hidePopover();
 
+                        popoverElm1 = this;
+
+                        $(this).popover('show');
+                        
                         const node = callback.nodeDB.db.find((n) => n.id == $(this).attr('id'));
                         __this.hovered.emit({ node, $ });
 
-                        $('.popover').on('mouseleave', function () {
-                            $(_this).popover('hide');
+                        clearTimeout(timeout);
+
+                        $('.popover').off('mouseleave').on('mouseleave', function () {
+                            hidePopover();
                         });
                     })
                     .off('mouseleave')
-                    .on('mouseleave', function () {
-                        var _this = this;
-                        setTimeout(function () {
-                            if (!$('.popover:hover').length) {
-                                $(_this).popover('hide');
-                            }
-                        }, __this.mouseleaveMilliseconds || 0);
+                    .on('mouseleave', function (e) {
+                        let hovered = false;
+                        popoverElm2 = this;
+
+                        $('.popover').hover(function () {
+                            hovered = true;
+                        }, function () {
+                            hovered = false;
+                        });
+                        
+                        if (!$('.popover:hover').length) {
+                            timeout = setTimeout(() => {
+                                !hovered && hidePopover();
+                            }, __this.mouseleaveMilliseconds || 0);
+                        }
                     });
             }
 

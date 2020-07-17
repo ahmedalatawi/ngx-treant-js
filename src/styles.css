@@ -80,15 +80,3 @@ body {
     font-family: 'Droid Serif', Georgia, 'Times New Roman', Times, serif;
     color: #444444;
 }
-
-.popover-title {
-    white-space: nowrap;
-    font-size: 0.8em;
-}
-
-.popover-content,
-.btn {
-    z-index: 9999;
-    text-align: center;
-    min-width: 75px;
-}

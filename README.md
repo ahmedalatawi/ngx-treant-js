@@ -6,14 +6,41 @@
 
 # NgxTreantJS :deciduous_tree:
 
-![](./images/angular_treantjs.gif)
+![](./images/angular_treant_js.gif)
 
 A simple Angular2+ component used as a wrapper for [TreantJS](https://fperucic.github.io/treant-js/) library for visualization of tree (chart) diagrams, with additional functionality. :fire::fire::fire:
+
+### [Demo](https://codesandbox.io/s/ngx-treant-js-demo-u5skm) :movie_camera:
 
 ### :arrow_down: Installation 
 ```sh
 npm install @ahmed757/ngx-treant-js --save
 ```
+
+### :wrench: Configuration
+Add required dependencies to `angular.json` as follows:
+
+```json
+...
+
+"styles": [
+    "node_modules/treant-js/Treant.css",
+    "node_modules/treant-js/vendor/perfect-scrollbar/perfect-scrollbar.css",
+    "src/styles.css"
+],
+"scripts": [
+    "node_modules/jquery/dist/jquery.min.js",
+    "node_modules/popper.js/dist/umd/popper.js",
+    "node_modules/treant-js/vendor/jquery.easing.js",
+    "node_modules/treant-js/vendor/jquery.mousewheel.js",
+    "node_modules/treant-js/vendor/perfect-scrollbar/perfect-scrollbar.js",
+    "node_modules/treant-js/vendor/raphael.js",
+    "node_modules/treant-js/Treant.js"
+]
+...
+```
+
+See full example [here](https://github.com/AhmedAlatawi/ngx-treant-js/blob/master/angular.json).
 
 ### Quick start :rocket:
 `employess-chart.component.html`
@@ -33,62 +60,31 @@ export class EmployeesChartComponent {
 
     employeesData = {
         chart: {
-            // must match the String value for `chartId`
-            container: '#employessChart-commpany',
-
-            levelSeparation: 45,
-
-            rootOrientation: 'WEST',
-
-            nodeAlign: 'BOTTOM',
-
+            container: "#employessChart-commpany",
+            
             connectors: {
-                type: 'step',
-                style: {
-                    'stroke-width': 2
-                }
+                type: 'step'
             },
             node: {
-                HTMLclass: 'product-commpany'
+                HTMLclass: 'employessNode'
             }
         },
-
         nodeStructure: {
-            text: { name: 'CEO' },
-            connectors: {
-                style: {
-                    stroke: '#bbb',
-                    'arrow-end': 'oval-wide-long'
-                }
+            text: {
+                name: "Paul Young",
+                title: "Chief executive officer",
+                contact: "Cel: 01 213 123 134",
             },
-            children: [{
-                    text: { name: 'Account' },
-                    stackChildren: true,
-                    connectors: {
-                        style: {
-                            stroke: '#8080FF',
-                            'arrow-end': 'block-wide-long'
-                        }
-                    },
-                    children: [{
-                            text: { name: 'Receptionist' },
-                            HTMLclass: 'reception'
-                        },
-                        {
-                            text: { name: 'Author' }
-                        }
-                    ]
-                },
+            image: "assets/images/img1.jpg",
+            children: [
                 {
-                    text: { name: 'Operation Manager' },
-                    connectors: {
-                        style: {
-                            stroke: '#bbb',
-                            'stroke-dasharray': '- .',
-                            'arrow-start': 'classic-wide-long'
-                        }
+                    text:{
+                        name: "John Doe",
+                        title: "Chief Technology Officer",
                     },
-                    children: [...]
+                    stackChildren: true,
+                    image: "assets/images/img2.jpg",
+                    children: [ ... ]
                 }
             ]
         }
@@ -99,34 +95,36 @@ export class EmployeesChartComponent {
 `styles.css`
 ```css
 ...
-/* class name must match the String value for `chartClass` */
 .employess-chart {
   height: 600px;
-  width: 750px;
   margin: 5px;
-  margin: 15px auto;
-  border: 3px solid #DDD;
+  width: 900px;
+}
+
+.Treant> p {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.node-name {
+  font-weight: bold;
+}
+
+.employessNode {
+  padding: 2px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   border-radius: 3px;
-}
-
-.node {
-  font-size: 11px;
-}
-
-.node.product-commpany {
-  cursor: pointer;
-  padding: 0 2px;
-  min-width: 60px;
-  text-align: center;
-  height: 30px;
-  border: 2px solid #E8E8E3;
-  border-radius: 2px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
-  background: #fff;
+  background-color: #ffffff;
+  border: 1px solid #000;
+  width: 200px;
+  font-family: Tahoma;
+  font-size: 12px;
 }
 ...
 ```
-See full example [here](https://github.com/fperucic/treant-js/tree/master/examples/connectors).
+See full example [here](https://github.com/fperucic/treant-js/tree/master/examples/basic-example).
 
 **Note: :bulb:** In a real world application, the `data` would most likely come from a server or remote place, which means that we would need to initialize `NgxTreantChart` only when `data` arrives. Therefore, `*ngIf` can be used as a workaround as follows:
 ```html
@@ -152,7 +150,7 @@ See full example [here](https://github.com/fperucic/treant-js/tree/master/exampl
 | `(hovered)` | A callback function invoked when a `TreeNode` is mouse hovered |
 | `(dragged)` | A callback function invoked when a `TreeNode` is dragged |
 | `(dropped)` | A callback function invoked when a `TreeNode` is dropped |
-| `(updated)` | A callback function invoked when `TreeNode`'s content is updated |
+| `(updated)` | A callback function invoked when `TreeNode`'s content is updated on dblclick event |
 | `(loadedNodes)` | A callback function invoked when `TreeNodes` are loaded |
 | `(loadedTree)` | A callback function invoked when the `Tree` is loaded |
 | `(loadedTreant)` | A callback function invoked when the `Treant` is loaded |

@@ -1,1 +1,39 @@
-<p>basic-popover works!</p>
+<div class="container">
+  <p>Basic Popover Chart: supports single-click, double-click, and drag-drop (swap nodes) events. Also, supports Add and Remove nodes using popovers.</p>
+
+  <ngx-treant-chart *ngIf="displayChart" [chartId]="basicPopoverId" [chartClass]="basicPopoverClass"
+    [data]="basicPopoverData" [isDraggable]="true" [popoverSettings]="popoverSettings" [mouseleaveMilliseconds]="300"
+    (dragged)="onDrag($event)" (dropped)="onDrop($event)" (clicked)="onClick($event)" (hovered)="onHover($event)"
+    (loadedNodes)="onLoadNodes($event)" (loadedTree)="onLoadTree($event)" (loadedTreant)="onLoadTreant($event)">
+  </ngx-treant-chart>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">New Employee</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name (required)</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter title">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="text" class="form-control" id="contact" formControlName="contact" placeholder="Enter contact">
+      </div>
+      <div class="form-group">
+        <label for="image">Image path or link</label>
+        <input type="text" class="form-control" id="image" formControlName="image" placeholder="e.g. http://gallary/imgs/malory.png">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.name.value">Add</button>
+    </form>
+  </div>
+</ng-template>

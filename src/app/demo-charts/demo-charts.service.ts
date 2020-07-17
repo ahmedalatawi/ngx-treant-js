@@ -239,6 +239,125 @@ export class DemoAppService {
         },
     };
 
+    private basicPopoverData = {
+        chart: {
+            container: "#basic-popover",
+            connectors: {
+                type: 'step'
+            },
+            node: {
+                HTMLclass: 'nodeExample1'
+            }
+        },
+        nodeStructure: {
+            id: 0,
+            parentId: -1,
+            text: {
+                name: "Mark Hill",
+                title: "Chief executive officer",
+                contact: "Tel: 01 213 123 134",
+            },
+            image: "assets/headshots/2.jpg",
+            children: [
+                {
+                    text:{
+                        name: "Joe Linux",
+                        title: "Chief Technology Officer",
+                    },
+                    id: 1,
+                    parentId: 0,
+                    stackChildren: true,
+                    image: "assets/headshots/1.jpg",
+                    children: [
+                        {
+                            text:{
+                                name: "Ron Blomquist",
+                                title: "Chief Information Security Officer"
+                            },
+                            id: 2,
+                            parentId: 1,
+                            image: "assets/headshots/8.jpg"
+                        },
+                        {
+                            text:{
+                                name: "Michael Rubin",
+                                title: "Chief Innovation Officer",
+                                contact: "we@aregreat.com"
+                            },
+                            id: 3,
+                            parentId: 2,
+                            image: "assets/headshots/9.jpg"
+                        }
+                    ]
+                },
+                {
+                    stackChildren: true,
+                    text:{
+                        name: "Linda May",
+                        title: "Chief Business Officer",
+                    },
+                    id: 4,
+                    parentId: 0,
+                    image: "assets/headshots/5.jpg",
+                    children: [
+                        {
+                            text:{
+                                name: "Alice Lopez",
+                                title: "Chief Communications Officer"
+                            },
+                            id: 5,
+                            parentId: 4,
+                            image: "assets/headshots/7.jpg"
+                        },
+                        {
+                            text:{
+                                name: "Mary Johnson",
+                                title: "Chief Brand Officer"
+                            },
+                            id: 6,
+                            parentId: 5,
+                            image: "assets/headshots/4.jpg"
+                        },
+                        {
+                            text:{
+                                name: "Kirk Douglas",
+                                title: "Chief Business Development Officer"
+                            },
+                            id: 7,
+                            parentId: 6,
+                            image: "assets/headshots/11.jpg"
+                        }
+                    ]
+                },
+                {
+                    text:{
+                        name: "John Green",
+                        title: "Chief accounting officer",
+                        contact: "Tel: 01 213 123 134",
+                    },
+                    id: 8,
+                    parentId: 0,
+                    image: "assets/headshots/6.jpg",
+                    children: [
+                        {
+                            text:{
+                                name: "Erica Reel",
+                                title: "Chief Customer Officer"
+                            },
+                            // link: {
+                            //     href: "http://www.google.com"
+                            // },
+                            id: 9,
+                            parentId: 8,
+                            image: "assets/headshots/10.jpg"
+                        }
+                    ]
+                }
+            ]
+        }
+    };
+
+
     constructor() {}
 
     getOrganiseChartBigCommpanyData(): any {
@@ -248,4 +367,19 @@ export class DemoAppService {
     getCollapsableStructureData(): any {
         return this.collapsableStructureData;
     }
+
+    getBasicPopoverData(): any {
+        return this.basicPopoverData;
+    }
+
+    flattenItems(items, key): any {
+        return items.reduce((flattenedItems, item) => {
+            flattenedItems.push(item)
+            if (Array.isArray(item[key])) {
+                flattenedItems = flattenedItems.concat(this.flattenItems(item[key], key))
+                // delete item[key]
+            }
+            return flattenedItems
+        }, [])
+      }
 }
