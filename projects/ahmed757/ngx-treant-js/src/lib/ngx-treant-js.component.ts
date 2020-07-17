@@ -139,7 +139,11 @@ export class NgxTreantJsComponent implements AfterViewInit {
 
                 $(document).off('click');
                 $(currentEle).html(
-                    '<input class="input-field" style="width:' + $(currentEle).width() +'px;" type="text" value="' + value + '"/>'
+                    '<input class="input-field" style="width:' +
+                        $(currentEle).width() +
+                        'px;" type="text" value="' +
+                        value +
+                        '"/>'
                 );
                 $('.input-field').focus();
                 $('.input-field').keyup(function (event) {
@@ -203,7 +207,9 @@ export class NgxTreantJsComponent implements AfterViewInit {
 
                     hidePopover();
 
-                    (node.text && node.text[propName]) && updateTextVal(currentEle, value, classVal, node, propName);
+                    node.text &&
+                        node.text[propName] &&
+                        updateTextVal(currentEle, value, classVal, node, propName);
                 }
             });
 
@@ -217,27 +223,32 @@ export class NgxTreantJsComponent implements AfterViewInit {
                         popoverElm1 = this;
 
                         $(this).popover('show');
-                        
+
                         const node = callback.nodeDB.db.find((n) => n.id == $(this).attr('id'));
                         __this.hovered.emit({ node, $ });
 
                         clearTimeout(timeout);
 
-                        $('.popover').off('mouseleave').on('mouseleave', function () {
-                            hidePopover();
-                        });
+                        $('.popover')
+                            .off('mouseleave')
+                            .on('mouseleave', function () {
+                                hidePopover();
+                            });
                     })
                     .off('mouseleave')
                     .on('mouseleave', function (e) {
                         let hovered = false;
                         popoverElm2 = this;
 
-                        $('.popover').hover(function () {
-                            hovered = true;
-                        }, function () {
-                            hovered = false;
-                        });
-                        
+                        $('.popover').hover(
+                            function () {
+                                hovered = true;
+                            },
+                            function () {
+                                hovered = false;
+                            }
+                        );
+
                         if (!$('.popover:hover').length) {
                             timeout = setTimeout(() => {
                                 !hovered && hidePopover();

@@ -1,125 +1,125 @@
 {
-  "name": "angular-treant-demo",
-  "version": "0.0.0",
-  "author": "Ahmed Alatawi (aalat001@gmail.com)",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --base-href /angular-treant-demo/ --prod",
-    "build-lib": "ng build @ahmed757/ngx-treant-js --prod && npm run copy",
-    "build-lib-watch": "ng build @ahmed757/ngx-treant-js --watch",
-    "clean": "rm -rf ./dist & rm -rf node_modules & npm cache clean --force",
-    "test": "ng test",
-    "test-lib": "ng test @ahmed757/ngx-treant-js --code-coverage",
-    "test-lib-ci": "npm run test-lib -- --browsers ChromeHeadlessCI --watch false",
-    "lint": "ng lint",
-    "lint-lib": "ng lint @ahmed757/ngx-treant-js",
-    "prettier-format": "prettier --config .prettierrc '**/*.{ts,js,html,css,json}' --write",
-    "e2e": "ng e2e",
-    "copy": "cp -r images dist/ahmed757/ngx-treant-js && cp README.md dist/ahmed757/ngx-treant-js",
-    "prepublishOnly": "npm run -s build",
-    "commit": "git-cz",
-    "travis-deploy-once": "travis-deploy-once --pro",
-    "semantic-release": "semantic-release && npm run build"
-  },
-  "release": {
-    "pkgRoot": "dist/ahmed757/ngx-treant-js"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+    "name": "angular-treant-demo",
+    "version": "0.0.0",
+    "author": "Ahmed Alatawi (aalat001@gmail.com)",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build --base-href /angular-treant-demo/ --prod",
+        "build-lib": "ng build @ahmed757/ngx-treant-js --prod && npm run copy",
+        "build-lib-watch": "ng build @ahmed757/ngx-treant-js --watch",
+        "clean": "rm -rf ./dist & rm -rf node_modules & npm cache clean --force",
+        "test": "ng test",
+        "test-lib": "ng test @ahmed757/ngx-treant-js --code-coverage",
+        "test-lib-ci": "npm run test-lib -- --browsers ChromeHeadlessCI --watch false",
+        "lint": "ng lint",
+        "lint-lib": "ng lint @ahmed757/ngx-treant-js",
+        "prettier-format": "prettier --config .prettierrc '**/*.{ts,js,html,css,json}' --write",
+        "e2e": "ng e2e",
+        "copy": "cp -r images dist/ahmed757/ngx-treant-js && cp README.md dist/ahmed757/ngx-treant-js",
+        "prepublishOnly": "npm run -s build",
+        "commit": "git-cz",
+        "travis-deploy-once": "travis-deploy-once --pro",
+        "semantic-release": "semantic-release && npm run build"
+    },
+    "release": {
+        "pkgRoot": "dist/ahmed757/ngx-treant-js"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run prettier-format",
+            "commit-msg": "commitlint --edit"
+        }
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AhmedAlatawi/ngx-treant-js.git"
+    },
+    "bugs": {
+        "url": "https://github.com/AhmedAlatawi/ngx-treant-js/issues"
+    },
+    "homepage": "https://github.com/AhmedAlatawi/ngx-treant-js",
+    "keywords": [
+        "angular",
+        "javascript",
+        "typescript",
+        "bootstrap",
+        "treant-js",
+        "jquery",
+        "visualization",
+        "tree",
+        "diagrams",
+        "draws",
+        "charts",
+        "svg"
+    ],
+    "dependencies": {
+        "@ahmed757/ngx-treant-js": "^1.0.4",
+        "@angular/animations": "~9.0.7",
+        "@angular/common": "~9.0.7",
+        "@angular/compiler": "~9.0.7",
+        "@angular/core": "~9.0.7",
+        "@angular/forms": "^9.0.7",
+        "@angular/localize": "~9.0.7",
+        "@angular/platform-browser": "~9.0.7",
+        "@angular/platform-browser-dynamic": "~9.0.7",
+        "@angular/router": "~9.0.7",
+        "bootstrap": "4.5.0",
+        "jquery": "3.5.1",
+        "jquery-easing": "0.0.1",
+        "ngx-bootstrap": "^5.6.1",
+        "popper": "^1.0.1",
+        "popper.js": "^1.16.1",
+        "rxjs": "~6.5.4",
+        "treant-js": "^1.0.1",
+        "tslib": "^1.10.0",
+        "zone.js": "~0.10.2"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "~0.900.7",
+        "@angular-devkit/build-ng-packagr": "~0.900.7",
+        "@angular/cli": "~9.0.7",
+        "@angular/compiler-cli": "~9.0.7",
+        "@angular/language-service": "~9.0.7",
+        "@commitlint/cli": "^9.0.1",
+        "@commitlint/config-conventional": "^9.0.1",
+        "@types/jasmine": "~3.5.0",
+        "@types/jasminewd2": "~2.0.3",
+        "@types/jquery": "^3.3.38",
+        "@types/node": "^12.11.1",
+        "codelyzer": "^5.1.2",
+        "cz-conventional-changelog": "^3.2.0",
+        "husky": "^4.2.5",
+        "jasmine-core": "~3.5.0",
+        "jasmine-spec-reporter": "~4.2.1",
+        "karma": "~4.3.0",
+        "karma-chrome-launcher": "~3.1.0",
+        "karma-coverage-istanbul-reporter": "~2.1.0",
+        "karma-jasmine": "~2.0.1",
+        "karma-jasmine-html-reporter": "^1.4.2",
+        "lint-staged": "^10.2.11",
+        "ng-packagr": "^9.0.0",
+        "prettier": "2.0.5",
+        "protractor": "~5.4.3",
+        "semantic-release": "^17.1.1",
+        "travis-deploy-once": "^5.0.11",
+        "ts-node": "~8.3.0",
+        "tslint": "~5.18.0",
+        "typescript": "~3.7.5"
     }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier-format",
-      "commit-msg": "commitlint --edit"
-    }
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AhmedAlatawi/ngx-treant-js.git"
-  },
-  "bugs": {
-    "url": "https://github.com/AhmedAlatawi/ngx-treant-js/issues"
-  },
-  "homepage": "https://github.com/AhmedAlatawi/ngx-treant-js",
-  "keywords": [
-    "angular",
-    "javascript",
-    "typescript",
-    "bootstrap",
-    "treant-js",
-    "jquery",
-    "visualization",
-    "tree",
-    "diagrams",
-    "draws",
-    "charts",
-    "svg"
-  ],
-  "dependencies": {
-    "@ahmed757/ngx-treant-js": "^1.0.4",
-    "@angular/animations": "~9.0.7",
-    "@angular/common": "~9.0.7",
-    "@angular/compiler": "~9.0.7",
-    "@angular/core": "~9.0.7",
-    "@angular/forms": "^9.0.7",
-    "@angular/localize": "~9.0.7",
-    "@angular/platform-browser": "~9.0.7",
-    "@angular/platform-browser-dynamic": "~9.0.7",
-    "@angular/router": "~9.0.7",
-    "bootstrap": "4.5.0",
-    "jquery": "3.5.1",
-    "jquery-easing": "0.0.1",
-    "ngx-bootstrap": "^5.6.1",
-    "popper": "^1.0.1",
-    "popper.js": "^1.16.1",
-    "rxjs": "~6.5.4",
-    "treant-js": "^1.0.1",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.7",
-    "@angular-devkit/build-ng-packagr": "~0.900.7",
-    "@angular/cli": "~9.0.7",
-    "@angular/compiler-cli": "~9.0.7",
-    "@angular/language-service": "~9.0.7",
-    "@commitlint/cli": "^9.0.1",
-    "@commitlint/config-conventional": "^9.0.1",
-    "@types/jasmine": "~3.5.0",
-    "@types/jasminewd2": "~2.0.3",
-    "@types/jquery": "^3.3.38",
-    "@types/node": "^12.11.1",
-    "codelyzer": "^5.1.2",
-    "cz-conventional-changelog": "^3.2.0",
-    "husky": "^4.2.5",
-    "jasmine-core": "~3.5.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.3.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~2.1.0",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
-    "lint-staged": "^10.2.11",
-    "ng-packagr": "^9.0.0",
-    "prettier": "2.0.5",
-    "protractor": "~5.4.3",
-    "semantic-release": "^17.1.1",
-    "travis-deploy-once": "^5.0.11",
-    "ts-node": "~8.3.0",
-    "tslint": "~5.18.0",
-    "typescript": "~3.7.5"
-  }
 }

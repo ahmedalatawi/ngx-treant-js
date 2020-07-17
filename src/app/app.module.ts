@@ -20,7 +20,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         ConnectorsComponent,
         HomeChartsComponent,
     ],
-    imports: [BrowserModule, AppRoutingModule, NgxTreantJsModule, ReactiveFormsModule, ModalModule.forRoot()],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgxTreantJsModule,
+        ReactiveFormsModule,
+        ModalModule.forRoot(),
+    ],
     providers: [],
     bootstrap: [AppComponent],
 })
