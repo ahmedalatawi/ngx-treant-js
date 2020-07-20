@@ -5,6 +5,7 @@ import { NgxTreantJsComponent } from './ngx-treant-js.component';
 import { Treant } from 'treant-js';
 import * as raphael from '../../../../../node_modules/treant-js/vendor/raphael';
 import * as jquery from 'jquery';
+import { By } from '@angular/platform-browser';
 
 (<any>window).Treant = Treant;
 (<any>window).$ = jquery;
@@ -34,12 +35,12 @@ describe('NgxTreantJsComponent', () => {
                 connectors: {
                     type: 'step',
                     style: {
-                        'stroke-width': 2,
-                    },
+                        'stroke-width': 2
+                    }
                 },
                 node: {
-                    HTMLclass: 'big-commpany',
-                },
+                    HTMLclass: 'test-chart-class'
+                }
             },
             nodeStructure: {
                 text: { name: 'CEO' },
@@ -47,15 +48,37 @@ describe('NgxTreantJsComponent', () => {
                     style: {
                         stroke: '#bbb',
                         'arrow-end': 'oval-wide-long',
-                        className: 'test',
-                    },
+                        className: 'test'
+                    }
                 },
-            },
+                children: [
+                    {
+                        text: { name: 'Account' },
+                        stackChildren: true,
+                        connectors: {
+                            style: {
+                                stroke: '#8080FF',
+                                'arrow-end': 'block-wide-long',
+                            },
+                        },
+                        children: [
+                            {
+                                text: { name: 'Receptionist' },
+                                HTMLclass: 'reception',
+                            },
+                            {
+                                text: { name: 'Author' }
+                            }
+                        ]
+                    }
+                ]
+            }
         };
         fixture.detectChanges();
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
+    it('Tree should be loaded', () => {
+        const chart = fixture.debugElement.query(By.css('.test-chart-class')).nativeElement;
+        expect(chart.id).toBe('test-chart-id');
     });
 });

@@ -11,6 +11,7 @@ cache:
   directories:
   - $HOME/.npm
 script:
+- npm run test-lib-ci
 - npm run build-lib && npm run build
 
 notifications:

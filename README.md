@@ -42,6 +42,13 @@ Add required dependencies to `angular.json` as follows:
 
 See full example [here](https://github.com/AhmedAlatawi/ngx-treant-js/blob/master/angular.json).
 
+### :pencil2: Key Goals
+* Easy to integrate and use in any `Angular` applications
+* Provide `callback` functions to react to user's actions, e.g. single-click, double-click, drag-drop, hover, etc
+* provide `drag-drop` feature for swapping (re-positioning) `Tree` nodes
+* Support adding & removing `Tree` nodes
+* Support editting `Node`'s content, e.g. `name`, `title`, etc
+
 ### Quick start :rocket:
 `employess-chart.component.html`
 ```html
@@ -134,6 +141,9 @@ See full example [here](https://github.com/fperucic/treant-js/tree/master/exampl
     *ngIf="isDataLoaded">
 </ngx-treant-chart>
 ```
+
+### Bootstrap Popover Example
+![](./images/chart_with_popover_example.gif)
 
 
 ### :page_facing_up: NgxTreantChart component API
