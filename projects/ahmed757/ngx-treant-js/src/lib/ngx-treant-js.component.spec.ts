@@ -35,12 +35,12 @@ describe('NgxTreantJsComponent', () => {
                 connectors: {
                     type: 'step',
                     style: {
-                        'stroke-width': 2
-                    }
+                        'stroke-width': 2,
+                    },
                 },
                 node: {
-                    HTMLclass: 'test-chart-class'
-                }
+                    HTMLclass: 'test-chart-class',
+                },
             },
             nodeStructure: {
                 text: { name: 'CEO' },
@@ -48,8 +48,8 @@ describe('NgxTreantJsComponent', () => {
                     style: {
                         stroke: '#bbb',
                         'arrow-end': 'oval-wide-long',
-                        className: 'test'
-                    }
+                        className: 'test',
+                    },
                 },
                 children: [
                     {
@@ -67,12 +67,12 @@ describe('NgxTreantJsComponent', () => {
                                 HTMLclass: 'reception',
                             },
                             {
-                                text: { name: 'Author' }
-                            }
-                        ]
-                    }
-                ]
-            }
+                                text: { name: 'Author' },
+                            },
+                        ],
+                    },
+                ],
+            },
         };
         fixture.detectChanges();
     });
