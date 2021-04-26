@@ -28,12 +28,12 @@
         "SVG"
     ],
     "dependencies": {
-        "jquery": "^3.5.1",
+        "jquery": "3.6.0",
         "jquery-easing": "0.0.1",
-        "popper": "^1.0.1",
-        "popper.js": "^1.16.1",
-        "treant-js": "^1.0.1",
-        "tslib": "^1.10.0"
+        "popper": "1.0.1",
+        "popper.js": "1.16.1",
+        "treant-js": "1.0.1",
+        "tslib": "1.14.1"
     },
     "peerDependencies": {
         "@angular/common": "^9.0.7",
