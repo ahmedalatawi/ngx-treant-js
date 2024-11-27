@@ -79,7 +79,7 @@
         "@angular/platform-browser": "~9.0.7",
         "@angular/platform-browser-dynamic": "~9.0.7",
         "@angular/router": "~9.0.7",
-        "bootstrap": "4.5.0",
+        "bootstrap": "4.6.1",
         "jquery": "3.5.1",
         "jquery-easing": "0.0.1",
         "ngx-bootstrap": "^5.6.1",
