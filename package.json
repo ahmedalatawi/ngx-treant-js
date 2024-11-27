@@ -98,7 +98,7 @@
         "@angular/language-service": "~9.0.7",
         "@commitlint/cli": "^9.0.1",
         "@commitlint/config-conventional": "^9.0.1",
-        "@types/jasmine": "~3.5.0",
+        "@types/jasmine": "3.10.6",
         "@types/jasminewd2": "~2.0.3",
         "@types/jquery": "^3.3.38",
         "@types/node": "^12.11.1",
